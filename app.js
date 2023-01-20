@@ -8,6 +8,8 @@ const {
 const MetaProvider = require('@bot-whatsapp/provider/meta')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
+const { createBotDialog } = require('@bot-whatsapp/contexts/dialogflow')
+
 /**
  * Aqui declaramos los flujos hijos, los flujos se declaran de atras para adelante, es decir que si tienes un flujo de este tipo:
  *
@@ -98,8 +100,15 @@ const main = async () => {
         verifyToken: process.env.VERIFY_TOKEN,
     })
 
-    createBot({
-        flow: adapterFlow,
+    /* Bot personalizado */
+    // createBot({
+    //     flow: adapterFlow,
+    //     provider: adapterProvider,
+    //     database: adapterDB,
+    // })
+
+    /* Bot con Dialogflow */
+    createBotDialog({
         provider: adapterProvider,
         database: adapterDB,
     })
