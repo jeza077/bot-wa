@@ -1,7 +1,6 @@
-require('dotenv').config()
 const {
     // createBot,
-    createProvider,
+    createProvider
     // createFlow,
     // addKeyword,
 } = require('@bot-whatsapp/bot')
@@ -9,7 +8,7 @@ const {
 const MetaProvider = require('@bot-whatsapp/provider/meta')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
-const { createBotDialog } = require('packages/contexts/dialogflow')
+const { createBotDialog } = require('@bot-whatsapp/contexts/dialogflow')
 
 /**
  * Aqui declaramos los flujos hijos, los flujos se declaran de atras para adelante, es decir que si tienes un flujo de este tipo:
