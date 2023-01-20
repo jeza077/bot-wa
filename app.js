@@ -1,14 +1,14 @@
 const {
-    createBot,
+    // createBot,
     createProvider,
-    createFlow,
-    addKeyword,
+    // createFlow,
+    // addKeyword,
 } = require('@bot-whatsapp/bot')
 
 const MetaProvider = require('@bot-whatsapp/provider/meta')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
-// const { createBotDialog } = require('@bot-whatsapp/contexts/src/dialogflow')
+const { createBotDialog } = require('@bot-whatsapp/contexts/dialogflow')
 
 /**
  * Aqui declaramos los flujos hijos, los flujos se declaran de atras para adelante, es decir que si tienes un flujo de este tipo:
@@ -76,8 +76,8 @@ const MockAdapter = require('@bot-whatsapp/database/mock')
 //     [flowSecundario]
 // )
 
-const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
-    .addAnswer('🙌 Hola bienvenido a este *Chatbot*')
+// const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
+//     .addAnswer('🙌 Hola bienvenido a este *Chatbot*')
     // .addAnswer(
     //     [
     //         'te comparto los siguientes links de interes sobre el proyecto',
@@ -92,7 +92,7 @@ const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
 
 const main = async () => {
     const adapterDB = new MockAdapter()
-    const adapterFlow = createFlow([flowPrincipal])
+    // const adapterFlow = createFlow([flowPrincipal])
 
     const adapterProvider = createProvider(MetaProvider, {
         jwtToken: process.env.TOKEN_WA,
@@ -101,17 +101,17 @@ const main = async () => {
     })
 
     /* Bot personalizado */
-    createBot({
-        flow: adapterFlow,
-        provider: adapterProvider,
-        database: adapterDB,
-    })
+    // createBot({
+    //     flow: adapterFlow,
+    //     provider: adapterProvider,
+    //     database: adapterDB,
+    // })
 
-    /* Bot con Dialogflow 
+    /* Bot con Dialogflow */
     createBotDialog({
         provider: adapterProvider,
         database: adapterDB,
-    })*/
+    })
 }
 
 main()
