@@ -1,9 +1,14 @@
-import { createProvider } from '@bot-whatsapp/bot'
+const {
+    // createBot,
+    createProvider
+    // createFlow,
+    // addKeyword,
+} = require('@bot-whatsapp/bot')
 
-import MetaProvider from '@bot-whatsapp/provider/meta'
-import MockAdapter from '@bot-whatsapp/database/mock'
+const MetaProvider = require('@bot-whatsapp/provider/meta')
+const MockAdapter = require('@bot-whatsapp/database/mock')
 
-import { createBotDialog } from '@bot-whatsapp/contexts/dialogflow'
+const { createBotDialog } = require('@bot-whatsapp/contexts/src/dialogflow')
 
 /**
  * Aqui declaramos los flujos hijos, los flujos se declaran de atras para adelante, es decir que si tienes un flujo de este tipo:
